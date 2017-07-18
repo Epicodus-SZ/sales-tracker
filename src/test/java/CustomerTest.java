@@ -18,4 +18,11 @@ public class CustomerTest {
     testCustomer.save();
     assertEquals(true, Customer.all().get(0).equals(testCustomer));
   }
+
+  @Test
+  public void find_FindsCustomerByID_Customer() {
+    Customer testCustomer = new Customer ("Steve");
+    testCustomer.save();
+    assertEquals(testCustomer, Customer.find(testCustomer.getId()));
+  }
 }
