@@ -1,0 +1,61 @@
+Customer
+  Customer_ID (1)
+  name (Lynn)
+
+  customer.methods
+  Find(customer_id)
+
+
+
+Product
+  Product_ID (1)
+  name (Expresso)
+  price (5)
+
+  Product.methods
+  add Product
+  update product
+  delete product
+  list all products
+  find(by name)
+  findProductPriced2orLess()
+  findProductPricedMoreThan2()
+
+Sales (events)
+CONSTANT 30DayRevenueGoal
+CONSTANT 65DayRevenueGoal
+  Sales_ID (1)
+  CustomerID (1)
+  PurchaseDate
+  VisaNum (xxxx-xxxx-xxxx-xxxx)
+  AmountPaid
+  Tax Paid (2.79)
+  List<Products>
+
+sales.methods
+CreateInvoice(customer_ID)
+FindSalesbyCustomerID(customer_id)
+All()
+SalesLastMonth()
+SalesLastQuarter()
+TotalRevenueLastMonth()
+TotalRevenueLastQuarter()
+
+
+
+
+Sales_Products (join table) - (Store Bag)
+  SP_ID       (1)
+  Sales_ID    (1)
+  Product_ID  (1)
+
+SP_ID     Sales_ID      Pro_ID
+1           1             1
+2           1             2
+3           1             3
+4           2             2
+
+
+
+Lynn
+  Purchase 1 = Sales_ID (1) = Expresso, Hot Chocolate, scone
