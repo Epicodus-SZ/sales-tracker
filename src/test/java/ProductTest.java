@@ -32,11 +32,20 @@ public class ProductTest {
     assertEquals(testProduct, Product.find(testProduct.getId()));
   }
 
-  // @Test
-  // public void delete_DeletesTheProductFromTheDB_true() {
-  //   Product testProduct = new Product ("Expresso", 425);
-  //   testProduct.save();
-  //   testProduct.delete();
-  //   assertEquals(null, Product.find(testProduct.getId()));
-  // }
-}
+  @Test
+  public void delete_DeletesTheProductFromTheDB_true() {
+    Product testProduct = new Product ("Expresso", 425);
+    testProduct.save();
+    testProduct.delete();
+    assertEquals(null, Product.find(testProduct.getId()));
+  }
+
+  @Test
+  public void update_UpdatesTheProductNameAndPrice_true() {
+    Product testProduct = new Product ("Expresso", 425);
+    testProduct.save();
+    testProduct.update("Latte", 550);
+    assertEquals("Latte", Product.find(testProduct.getId()).getName());
+    assertEquals(550, Product.find(testProduct.getId()).getPrice());
+  }
+}// end of class

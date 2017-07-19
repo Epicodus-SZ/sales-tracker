@@ -3,7 +3,10 @@ Customer
   name (Lynn)
 
   customer.methods
-  Find(customer_id)
+  *** Find(customer_id) - DONE
+  Save - DONE
+  List All - DONE
+
 
 
 
@@ -13,13 +16,13 @@ Product
   price (5)
 
   Product.methods
-  add Product
-  update product
-  delete product
-  list all products
-  find(by name)
-  findProductPriced2orLess()
-  findProductPricedMoreThan2()
+  *** add Product -DONE
+  *** update product -DONE
+  *** delete product - DONE
+  *** list all products - DONE
+  *** find(by ID) - DONE 
+
+
 
 Sales (events)
 CONSTANT 30DayRevenueGoal
@@ -41,7 +44,10 @@ SalesLastQuarter()
 TotalRevenueLastMonth()
 TotalRevenueLastQuarter()
 
-
+UI Requirements:
+*** find(by name)
+*** findProductPriced2orLess()
+findProductPricedMoreThan2()
 
 
 Sales_Products (join table) - (Store Bag)

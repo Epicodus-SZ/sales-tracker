@@ -9,12 +9,6 @@ public class Product {
   public Product(String name, int price){
     this.name = name;
     this.price = price;
-
-
-    // a = new BigDecimal("2.5"); // digit left of 5 is even, so round down
-    // a.setScale(0, BigDecimal.ROUND_HALF_EVEN).toString() // => 2
-
-
   }
 
   /// Getters ///////////////////////////
@@ -79,6 +73,17 @@ public class Product {
     con.createQuery(sql)
       .addParameter("id", id)
       .executeUpdate();
+    }
+  }
+
+  public void update(String name, int price) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE products SET name = :name, price = :price WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("price", price)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 }  //end of class
