@@ -38,7 +38,7 @@ public class SaleTest {
   }
 
   @Test
-  public void Find_returnsTheSalesDataFromSalesTable() {
+  public void Find_returnsTheSalesDataFromSalesTableAndProducts() {
     Customer testCustomer = new Customer ("Steve");
     testCustomer.save();
     List<Product> soldProducts = new ArrayList<Product>();
