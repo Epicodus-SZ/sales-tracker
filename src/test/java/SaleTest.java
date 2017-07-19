@@ -37,6 +37,24 @@ public class SaleTest {
     assertEquals(true, testCustomer instanceof Customer);
   }
 
+  @Test
+  public void Find_returnsTheSalesDataFromSalesTable() {
+    Customer testCustomer = new Customer ("Steve");
+    testCustomer.save();
+    List<Product> soldProducts = new ArrayList<Product>();
+    Product testProduct = new Product ("Expresso", 425);
+    testProduct.save();
+    Product testProduct2 = new Product ("Scone", 225);
+    testProduct2.save();
+    soldProducts.add(testProduct);
+    soldProducts.add(testProduct2);
+    Sale testSale = new Sale (testCustomer.getId(), soldProducts);
+    testSale.save();
+    assertEquals(testProduct.getName(), Sale.find(testSale.getId()).getPurchasedProducts().get(0).getName());
+    assertEquals(testProduct2.getPrice(), Sale.find(testSale.getId()).getPurchasedProducts().get(1).getPrice());
+    //assertEquals(testSale.getId(),Sale.find(testSale.getId()).getCustomerId());
+  }
+
   // @Test
   // public void getPriceInDollars_returns2DigitDouble() {
   //   Sale testSale = new Sale ("Expresso", 425);
