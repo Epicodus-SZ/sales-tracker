@@ -55,13 +55,13 @@ public class Sale {
     }
   }
 
-  // public static List<Sale> all() {
-  //   String sql = "SELECT id, name FROM sales";
-  //   try(Connection con = DB.sql2o.open()) {
-  //    return con.createQuery(sql).executeAndFetch(Sale.class);
-  //   }
-  // }
-  //
+  public static List<Sale> all() {
+    String sql = "SELECT * FROM sales";
+    try(Connection con = DB.sql2o.open()) {
+     return con.createQuery(sql).executeAndFetch(Sale.class);
+    }
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       //first Data Save - Save to Sales Table

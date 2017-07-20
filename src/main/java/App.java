@@ -26,7 +26,13 @@ public class App {
       String productName = request.queryParams("name");
       int productPrice = Integer.parseInt(request.queryParams("price"));
       Product newProduct = new Product (productName, productPrice);
-      newProduct.save();
+      try {
+        newProduct.save();
+      }
+      catch (IllegalArgumentException exception){
+        System.out.println(exception.getMessage());
+        // response.redirect("/error");
+      }
       response.redirect("/products");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -67,6 +73,24 @@ public class App {
       response.redirect("/products");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-    
+
+    get("/products/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Product.find(Integer.parseInt(request.params(":id"))).delete();
+      response.redirect("/products");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+    //Sales Routes
+    get("/reports/sales/all", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int ProdNum = Integer.parseInt(request.params(":id"));
+      Product updateProduct = Product.find(ProdNum);
+      model.put("sales", Sale.all());
+      model.put("template", "templates/products-update.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   } //end of main
 } //end of class

@@ -55,6 +55,9 @@ public class Product {
   }
 
   public void save() {
+    if (this.price < 0){
+      throw new IllegalArgumentException("Product price cannot be less than zero - says Super Admin Steve Zaske");
+    }
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO products (name, price) VALUES (:name, :price)";
       this.id = (int) con.createQuery(sql, true)

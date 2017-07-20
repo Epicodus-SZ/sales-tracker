@@ -1,0 +1,8 @@
+<!--products.vtl-->
+<h1>Products List</h1>
+<ul>
+  #foreach ($product in $products)
+    <li><a href="/products/$product.getId()">$product.getName()</a>, $product.getPrice()</li>
+  #end
+</ul>
+<!--products.vtl-->
