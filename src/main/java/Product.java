@@ -24,6 +24,14 @@ public class Product {
     return this.price;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
   public double getPriceInDollars() {
      return Math.round(((double)this.price/100) * 100.0) / 100.0;
   }
@@ -40,7 +48,7 @@ public class Product {
   }
 
   public static List<Product> all() {
-    String sql = "SELECT id, name FROM products";
+    String sql = "SELECT * FROM products";
     try(Connection con = DB.sql2o.open()) {
      return con.createQuery(sql).executeAndFetch(Product.class);
     }

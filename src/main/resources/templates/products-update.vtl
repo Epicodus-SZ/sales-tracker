@@ -1,0 +1,13 @@
+<!--products-new.vtl-->
+<h1>New Product</h1>
+
+<form action="/products/$product.getId()" method="post">
+  <label for="name">Name</label>
+  <input value="$product.getName()" id="name" name="name" type="text"><br>
+  <label for="price">Price</label>
+  <input value="$product.getPrice()" id="price" name="price" type="text"><br>
+
+
+  <button type="submit" class="btn btn-success">Update Product</button>
+</form>
+<!--products-new.vtl-->
